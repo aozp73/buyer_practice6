@@ -1,5 +1,5 @@
 create table product_tb(
-    id int auto_increment primary key
+    id int auto_increment primary key,
     name varchar not null,
     price varchar not null,
     qty varchar not null,
@@ -14,12 +14,13 @@ create table user_tb(
     created_at timestamp    
 );
 
-create table parchase_tb(
+create table purchase_tb(
     id int auto_increment primary key,
     user_id int,
     product_id int,
     count int,
-    constraint fk_user foreign key (user_id) constraint user_tb (id),
-    constraint fk_product foreign key (product_id) constraint product_tb (id)
+    created_at timestamp,
+    constraint fk_user foreign key (user_id) references user_tb(id),
+    constraint fk_product foreign key (product_id) references product_tb(id)
 );
 
